@@ -1,0 +1,20 @@
+[
+    {
+        "titulo": "Os Parças",
+        "figura": "https://upload.wikimedia.org/wikipedia/pt/4/46/Os_Par%C3%A7as.jpg",
+        "resumo": "Quatro amigos se envolvem em uma grande confusão ao tentarem organizar um casamento.",
+        "generos": ["Comédia"],
+        "elenco": ["Whindersson Nunes", "Tirullipa", "Tom Cavalcante"],
+        "classificacao": 12,
+        "avaliacao": 4
+    },
+    {
+        "titulo": "Harry Potter e a Pedra Filosofal",
+        "figura": "https://upload.wikimedia.org/wikipedia/pt/3/3f/Harry_Potter_and_the_Sorcerer%27s_Stone.jpg",
+        "resumo": "Um jovem descobre que é um bruxo e entra para a escola de magia de Hogwarts.",
+        "generos": ["Fantasia", "Aventura"],
+        "elenco": ["Daniel Radcliffe", "Emma Watson", "Rupert Grint"],
+        "classificacao": 10,
+        "avaliacao": 5
+    }
+]

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Filmes/Séries</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Catálogo de Filmes e Séries</h1>
+    <div id="catalogo"></div>
+
+    <script>
+        async function carregarFilmes() {
+            try {
+                const resposta = await fetch('filmes.json');
+                //NAO CONSEGUI USAR O LINK ATRELADO A TAREFA PARA PUXAR OS FILMES, POR ISSO UTILIZEI UM JSON LOCAL.
+
+                // Verifica se a resposta foi bem-sucedida
+                if (!resposta.ok) {
+                    throw new Error(`Erro ao carregar JSON: ${resposta.status}`);
+                }
+
+                const filmes = await resposta.json();
+
+                // Exibir dados no console para verificar se o JSON está carregando
+                console.log("Filmes carregados:", filmes);
+
+                exibirFilmes(filmes);
+            } catch (erro) {
+                console.error('Erro ao carregar os filmes:', erro);
+            }
+        }
+
+        function exibirFilmes(filmes) {
+            const catalogo = document.getElementById('catalogo');
+
+            // Verifica se o elemento correto foi selecionado
+            if (!catalogo) {
+                console.error("Elemento #catalogo não encontrado!");
+                return;
+            }
+
+            catalogo.innerHTML = ''; // Garante que a lista estará vazia antes de adicionar os filmes
+
+            filmes.forEach(filme => {
+                const card = document.createElement('div');
+                card.classList.add('filme');
+
+                card.innerHTML = `
+                    <img src="${filme.figura}" alt="${filme.titulo}">
+                    <h2>${filme.titulo}</h2>
+                    <p>${filme.resumo}</p>
+                    <p><strong>Gêneros:</strong> ${filme.generos.join(', ')}</p>
+                    <p><strong>Elenco:</strong> ${filme.elenco.join(', ')}</p>
+                    <p><strong>Classificação:</strong> ${filme.classificacao} anos</p>
+                    <p class="rating">${'⭐'.repeat(filme.avaliacao)}</p>
+                `;
+
+                catalogo.appendChild(card);
+            });
+        }
+
+        // Chamar a função para carregar os filmes ao carregar a página
+        carregarFilmes();
+    </script>
+</body>
+</html>
